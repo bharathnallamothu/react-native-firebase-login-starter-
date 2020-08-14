@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845490783888",
+    "firebase_url": "https://test-d2d14.firebaseio.com",
+    "project_id": "test-d2d14",
+    "storage_bucket": "test-d2d14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845490783888:android:94bbf2aec819784bf87a15",
+        "android_client_info": {
+          "package_name": "com.connectedthings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845490783888-h52hhmsriop0i061hae08hvdv4smofr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUzfO-E0UWBypffKs2JyA59ItGs1rgbOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845490783888-h52hhmsriop0i061hae08hvdv4smofr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
