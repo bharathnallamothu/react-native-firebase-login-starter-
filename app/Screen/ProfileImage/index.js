@@ -8,12 +8,6 @@ import styles from '@Screen/ProfileImage/Style'
 
 const PendingView = () => (
   <View
-    style={{
-      flex: 1,
-      backgroundColor: 'lightgreen',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
   >
     <Text>Waiting</Text>
   </View>
@@ -59,7 +53,7 @@ export default class ProfileImage extends PureComponent {
     const options = { quality: 0.5, base64: true };
     const data = await camera.takePictureAsync(options);
     //  eslint-disable-next-line
-    this.props.navigation.navigate('Dashboard', { url: 'data:image/png;base64,'+data.base64 })
+    this.props.navigation.navigate('Dashboard', { url: 'data:image/png;base64,' + data.base64 })
 
   };
 }

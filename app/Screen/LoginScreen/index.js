@@ -1,7 +1,7 @@
 // components/login.js
 
 import React, { Component } from 'react';
-import { Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { Text, View, TextInput, Button, Alert, ActivityIndicator, ToastAndroid } from 'react-native';
 import firebase from '../../database/firebase';
 
 import styles from '@Screen/LoginScreen/Style'
@@ -17,7 +17,9 @@ export default class Login extends Component {
       isLoading: false
     }
   }
-
+  showToast = (value) => {
+    ToastAndroid.show(value, ToastAndroid.SHORT, ToastAndroid.TOP);
+  };
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -44,7 +46,10 @@ export default class Login extends Component {
           })
           this.props.navigation.navigate('ProfileImage')
         })
-        .catch(error => this.setState({ errorMessage: error.message }))
+        .catch(error => {
+          this.showToast(error.message);
+          this.setState({ isLoading: false, errorMessage: error.message })
+        })
     }
   }
 
@@ -52,7 +57,7 @@ export default class Login extends Component {
     if (this.state.isLoading) {
       return (
         <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E" />
+          <ActivityIndicator size="large" color="#e6434e" />
         </View>
       )
     }

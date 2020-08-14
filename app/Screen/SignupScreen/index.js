@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ToastAndroid } from 'react-native';
 import firebase from '../../database/firebase';
 
 import styles from '@Screen/SignupScreen/Style'
@@ -17,7 +17,9 @@ export default class Signup extends Component {
       isLoading: false
     }
   }
-
+  showToast = (value) => {
+    ToastAndroid.show(value, ToastAndroid.SHORT, ToastAndroid.TOP);
+  };
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -35,12 +37,10 @@ export default class Signup extends Component {
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((res) => {
-          console.log("?????")
-          console.log(res)
           res.user.updateProfile({
             displayName: this.state.displayName
           })
-          console.log('User registered successfully!')
+          this.showToast('Signup Successfully Done');
           this.setState({
             isLoading: false,
             displayName: '',
@@ -50,9 +50,9 @@ export default class Signup extends Component {
           this.props.navigation.navigate('Login')
         })
         .catch(error => {
-          console.log("erorrrr")
-          console.log(error)
-          this.setState({ errorMessage: error.message })
+          this.showToast(error.message);
+          console.log(JSON.stringify(error))
+          this.setState({ isLoading: false, errorMessage: error.message })
         })
     }
   }
@@ -61,7 +61,7 @@ export default class Signup extends Component {
     if (this.state.isLoading) {
       return (
         <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E" />
+          <ActivityIndicator size="large" color="#e6434e" />
         </View>
       )
     }
